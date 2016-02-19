@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.gmariotti.recyclerview.itemanimator.SlideInOutLeftItemAnimator;
+
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private List<String> mDatas;
@@ -34,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
         //为RecyclerView设置添加删除动画
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+//        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setItemAnimator(new SlideInOutLeftItemAnimator(mRecyclerView));
 
         //为RecyclerView设置item间分割线
 //        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST);
