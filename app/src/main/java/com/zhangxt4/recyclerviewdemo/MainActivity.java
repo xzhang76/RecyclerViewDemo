@@ -1,5 +1,6 @@
 package com.zhangxt4.recyclerviewdemo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -67,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
                 mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.HORIZONTAL));
                 break;
             case R.id.action_stag_gridview:
+                Intent intent = new Intent(this, StaggeredViewActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;
