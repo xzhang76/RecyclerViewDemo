@@ -40,6 +40,16 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyViewHolder> {
     public int getItemCount() {
         return mDatas.size();
     }
+
+    //添加删除item的接口
+    public void addItem(int position) {
+        mDatas.add(position, "Inserted one");
+        notifyItemInserted(position);
+    }
+    public void deleteItem(int position) {
+        mDatas.remove(position);
+        notifyItemRemoved(position);
+    }
 }
 
 class MyViewHolder extends RecyclerView.ViewHolder {
@@ -47,6 +57,5 @@ class MyViewHolder extends RecyclerView.ViewHolder {
     public MyViewHolder(View view) {
         super(view);
         textView = (TextView) view.findViewById(R.id.id_textview);
-
     }
 }

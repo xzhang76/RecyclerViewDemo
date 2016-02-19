@@ -3,6 +3,7 @@ package com.zhangxt4.recyclerviewdemo;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
         //为RecyclerView设置布局管理
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(linearLayoutManager);
+
+        //为RecyclerView设置添加删除动画
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         //为RecyclerView设置item间分割线
 //        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST);
@@ -70,6 +74,12 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_stag_gridview:
                 Intent intent = new Intent(this, StaggeredViewActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.action_add:
+                mAdapter.addItem(1);
+                break;
+            case R.id.action_delete:
+                mAdapter.deleteItem(1);
                 break;
             default:
                 break;
