@@ -9,9 +9,14 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import it.gmariotti.recyclerview.itemanimator.SlideInOutLeftItemAnimator;
+import it.gmariotti.recyclerview.itemanimator.SlideScaleInOutRightItemAnimator;
 
 public class StaggeredViewActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
@@ -31,6 +36,23 @@ public class StaggeredViewActivity extends AppCompatActivity {
         //为RecyclerView设置布局管理,StaggeredGridView
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(staggeredGridLayoutManager);
+
+        //为RecyclerView设置add/delete动画
+        mRecyclerView.setItemAnimator(new SlideScaleInOutRightItemAnimator(mRecyclerView));
+
+        //为RecyclerView设置点击/长按监听
+        mAdapter.setOnItemClickListener(new MyRecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(StaggeredViewActivity.this, "click " + position, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+                mAdapter.deleteItem(position);
+                Toast.makeText(StaggeredViewActivity.this, position + " item deleted", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void initDatas() {
