@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 //        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setItemAnimator(new SlideInOutLeftItemAnimator(mRecyclerView));
 
+
         //为RecyclerView设置item间分割线
 //        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST);
 //        mRecyclerView.addItemDecoration(dividerItemDecoration);
